@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1k#h-4cc$o1%!s-#9m&ugjdrp1idx7y5xb68k281o!_k2hupa!'
+#SECRET_KEY = 'django-insecure-1k#h-4cc$o1%!s-#9m&ugjdrp1idx7y5xb68k281o!_k2hupa!'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG","False").lower=="true"
@@ -83,16 +84,16 @@ WSGI_APPLICATION = 'restapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'rest_api_qzkp',
-        'USER':'rest_api_qzkp_user',
-        'PASSWORD':'izO9LxEAwehRsB2afbzXNVHhWMSCvx5l',
-        'HOST':'dpg-cm6pqenqd2ns73evjkc0-a.oregon-postgres.render.com',
-        'PORT':'5432',
+        'NAME':'rest_api',
+        'USER':'postgres',
+        'PASSWORD':'postgres',
+        # 'HOST':'127.0.0.1',
+        # 'PORT':'8080',
     }
 }
 
 database_url=os.environ.get("DATABASE_URL")
-#DATABASES['default'] = dj_database_url.parse(database_url)
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 
 
